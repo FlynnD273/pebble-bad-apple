@@ -4,8 +4,8 @@
 #define FRAME_HEIGHT 108
 #define NUM_PIXELS FRAME_WIDTH * FRAME_HEIGHT
 
-#define FPS 7
-#define NUM_FRAMES 450
+#define FPS 12
+#define NUM_FRAMES 420
 
 static Window *s_main_window;
 static Layer *s_layer;

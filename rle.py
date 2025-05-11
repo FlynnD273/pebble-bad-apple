@@ -10,7 +10,7 @@ NUM_FRAMES = 450
 
 files = glob.glob(path.join(INPUT_PATH, "*.png"))
 files.sort()
-files = files if NUM_FRAMES == -1 else files[: NUM_FRAMES * 2 : 2]
+files = files if NUM_FRAMES == -1 else files[:NUM_FRAMES]
 
 frame = 0
 runs = []
@@ -21,8 +21,13 @@ for file in files:
     run_count = 0
     for y in range(height):
         for x in range(width):
-            val: float = img.getpixel((x, y))  # type: ignore
-            is_black = val < 20
+            val = img.getpixel((x, y))
+            if isinstance(val, tuple):
+                is_black = val[0] < 20
+            elif val is float:
+                is_black = val < 20
+            else:
+                is_black = True
             if is_counting_black == is_black:
                 run_count += 1
             else:
