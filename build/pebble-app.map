@@ -1182,7 +1182,6 @@ LOAD src/c/main.c.33.o
 LOAD aplite/appinfo.auto.c.33.o
 LOAD aplite/src/resource_ids.auto.c.33.o
 LOAD /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a
-LOAD /home/flynn/pebble-bad-apple/node_modules/pebble-clay/dist/binaries/aplite/libpebble-clay.a
 START GROUP
 LOAD /home/flynn/Documents/git-misc/rebbletool/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/libgcc.a
 LOAD /home/flynn/Documents/git-misc/rebbletool/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/../../../../arm-none-eabi/lib/thumb2/libc.a
@@ -1203,140 +1202,145 @@ LOAD /home/flynn/Documents/git-misc/rebbletool/arm-cs-tools/bin/../lib/gcc/arm-n
  .note.gnu.build-id
                 0x0000000000000084       0x24 linker stubs
 
-.text           0x00000000000000a8      0x3a8
+.text           0x00000000000000a8      0x400
  *(.text)
  .text          0x00000000000000a8       0x14 /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
  *(.text.*)
  .text.main_window_unload
                 0x00000000000000bc       0x24 src/c/main.c.33.o
  .text.new_frame
-                0x00000000000000e0       0x48 src/c/main.c.33.o
+                0x00000000000000e0       0x58 src/c/main.c.33.o
  .text.main_window_load
-                0x0000000000000128       0x6c src/c/main.c.33.o
+                0x0000000000000138       0x6c src/c/main.c.33.o
+ .text.get_value
+                0x00000000000001a4       0x20 src/c/main.c.33.o
+                0x00000000000001a4                get_value
  .text.frame_redraw
-                0x0000000000000194      0x140 src/c/main.c.33.o
+                0x00000000000001c4      0x168 src/c/main.c.33.o
  .text.startup.main
-                0x00000000000002d4       0x5c src/c/main.c.33.o
-                0x00000000000002d4                main
+                0x000000000000032c       0x5c src/c/main.c.33.o
+                0x000000000000032c                main
  .text.app_event_loop
-                0x0000000000000330        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000000330                app_event_loop
+                0x0000000000000388        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000000388                app_event_loop
  .text.app_timer_register
-                0x000000000000033c        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x000000000000033c                app_timer_register
- .text.free     0x0000000000000348        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000000348                free
+                0x0000000000000394        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000000394                app_timer_register
+ .text.free     0x00000000000003a0        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000003a0                free
  .text.layer_add_child
-                0x0000000000000354        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000000354                layer_add_child
+                0x00000000000003ac        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000003ac                layer_add_child
  .text.layer_create
-                0x0000000000000360        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000000360                layer_create
+                0x00000000000003b8        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000003b8                layer_create
  .text.layer_destroy
-                0x000000000000036c        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x000000000000036c                layer_destroy
+                0x00000000000003c4        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000003c4                layer_destroy
  .text.layer_get_bounds
-                0x0000000000000378        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000000378                layer_get_bounds
+                0x00000000000003d0        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000003d0                layer_get_bounds
  .text.layer_mark_dirty
-                0x0000000000000384        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000000384                layer_mark_dirty
+                0x00000000000003dc        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000003dc                layer_mark_dirty
  .text.layer_set_update_proc
-                0x0000000000000390        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000000390                layer_set_update_proc
- .text.malloc   0x000000000000039c        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x000000000000039c                malloc
- .text.memset   0x00000000000003a8        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000003a8                memset
+                0x00000000000003e8        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000003e8                layer_set_update_proc
+ .text.malloc   0x00000000000003f4        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000003f4                malloc
+ .text.memset   0x0000000000000400        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000000400                memset
  .text.resource_get_handle
-                0x00000000000003b4        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000003b4                resource_get_handle
+                0x000000000000040c        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x000000000000040c                resource_get_handle
  .text.resource_load_byte_range
-                0x00000000000003c0        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000003c0                resource_load_byte_range
+                0x0000000000000418        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000000418                resource_load_byte_range
  .text.resource_size
-                0x00000000000003cc        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000003cc                resource_size
+                0x0000000000000424        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000000424                resource_size
  .text.window_create
-                0x00000000000003d8        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000003d8                window_create
+                0x0000000000000430        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000000430                window_create
  .text.window_destroy
-                0x00000000000003e4        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000003e4                window_destroy
+                0x000000000000043c        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x000000000000043c                window_destroy
  .text.window_get_root_layer
-                0x00000000000003f0        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000003f0                window_get_root_layer
+                0x0000000000000448        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000000448                window_get_root_layer
  .text.window_set_window_handlers
-                0x00000000000003fc        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000003fc                window_set_window_handlers
+                0x0000000000000454        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000000454                window_set_window_handlers
  .text.window_stack_push
-                0x0000000000000408        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000000408                window_stack_push
+                0x0000000000000460        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000000460                window_stack_push
  .text.graphics_release_frame_buffer
-                0x0000000000000414        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000000414                graphics_release_frame_buffer
+                0x000000000000046c        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x000000000000046c                graphics_release_frame_buffer
  .text.gcolor_equal
-                0x0000000000000420        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000000420                gcolor_equal
+                0x0000000000000478        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000000478                gcolor_equal
  .text.window_set_background_color
-                0x000000000000042c        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x000000000000042c                window_set_background_color
+                0x0000000000000484        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000000484                window_set_background_color
  .text.graphics_capture_frame_buffer
-                0x0000000000000438        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000000438                graphics_capture_frame_buffer
+                0x0000000000000490        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000000490                graphics_capture_frame_buffer
  .text.gbitmap_get_data_row_info
-                0x0000000000000444        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000000444                gbitmap_get_data_row_info
+                0x000000000000049c        0xc /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x000000000000049c                gbitmap_get_data_row_info
  *(.rodata)
  *(.rodata*)
 
-.glue_7         0x0000000000000450        0x0
+.glue_7         0x00000000000004a8        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x0000000000000450        0x0
+.glue_7t        0x00000000000004a8        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000000450        0x0
+.vfp11_veneer   0x00000000000004a8        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x0000000000000450        0x0
+.v4_bx          0x00000000000004a8        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x0000000000000450        0x0
+.iplt           0x00000000000004a8        0x0
  .iplt          0x0000000000000000        0x0 /home/flynn/Documents/git-misc/rebbletool/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.rel.dyn        0x0000000000000450        0x0
+.rel.dyn        0x00000000000004a8        0x0
  .rel.iplt      0x0000000000000000        0x0 /home/flynn/Documents/git-misc/rebbletool/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.data           0x0000000000000450        0x8
+.data           0x00000000000004a8        0x4
  *(.data)
- .data          0x0000000000000450        0x0 /home/flynn/Documents/git-misc/rebbletool/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crti.o
- .data          0x0000000000000450        0x4 /home/flynn/Documents/git-misc/rebbletool/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
-                0x0000000000000450                __dso_handle
- .data          0x0000000000000454        0x0 src/c/main.c.33.o
- .data          0x0000000000000454        0x0 aplite/appinfo.auto.c.33.o
- .data          0x0000000000000454        0x0 aplite/src/resource_ids.auto.c.33.o
- .data          0x0000000000000454        0x0 /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
- .data          0x0000000000000454        0x0 /home/flynn/Documents/git-misc/rebbletool/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
- .data          0x0000000000000454        0x0 /home/flynn/Documents/git-misc/rebbletool/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtn.o
+ .data          0x00000000000004a8        0x0 /home/flynn/Documents/git-misc/rebbletool/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crti.o
+ .data          0x00000000000004a8        0x4 /home/flynn/Documents/git-misc/rebbletool/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
+                0x00000000000004a8                __dso_handle
+ .data          0x00000000000004ac        0x0 src/c/main.c.33.o
+ .data          0x00000000000004ac        0x0 aplite/appinfo.auto.c.33.o
+ .data          0x00000000000004ac        0x0 aplite/src/resource_ids.auto.c.33.o
+ .data          0x00000000000004ac        0x0 /home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+ .data          0x00000000000004ac        0x0 /home/flynn/Documents/git-misc/rebbletool/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
+ .data          0x00000000000004ac        0x0 /home/flynn/Documents/git-misc/rebbletool/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtn.o
  *(.data.*)
- .data.frame    0x0000000000000454        0x4 src/c/main.c.33.o
 
-.igot.plt       0x0000000000000458        0x0
+.igot.plt       0x00000000000004ac        0x0
  .igot.plt      0x0000000000000000        0x0 /home/flynn/Documents/git-misc/rebbletool/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.bss            0x0000000000000458       0x14
+.bss            0x00000000000004ac     0x3cd8
  *(.bss)
  *(.bss.*)
- .bss.frames_res_size
-                0x0000000000000458        0x4 src/c/main.c.33.o
+ .bss.frame     0x00000000000004ac        0x4 src/c/main.c.33.o
  .bss.frames_resource
-                0x000000000000045c        0x4 src/c/main.c.33.o
+                0x00000000000004b0        0x4 src/c/main.c.33.o
+ .bss.frames_res_size
+                0x00000000000004b4        0x4 src/c/main.c.33.o
+ .bss.prev_frame
+                0x00000000000004b8     0x3cc0 src/c/main.c.33.o
  .bss.index_offset
-                0x0000000000000460        0x4 src/c/main.c.33.o
+                0x0000000000004178        0x4 src/c/main.c.33.o
  .bss.s_main_window
-                0x0000000000000464        0x4 src/c/main.c.33.o
- .bss.s_layer   0x0000000000000468        0x4 src/c/main.c.33.o
+                0x000000000000417c        0x4 src/c/main.c.33.o
+ .bss.s_layer   0x0000000000004180        0x4 src/c/main.c.33.o
 
 DISCARD
  libc.a(*)
@@ -1372,42 +1376,42 @@ OUTPUT(/home/flynn/pebble-bad-apple/build/aplite/pebble-app.elf elf32-littlearm)
  .comment       0x0000000000000000       0x4f aplite/src/resource_ids.auto.c.33.o
  .comment       0x0000000000000000       0x4f /home/flynn/Documents/git-misc/rebbletool/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
 
-.debug_info     0x0000000000000000      0xf50
- .debug_info    0x0000000000000000      0xba3 src/c/main.c.33.o
- .debug_info    0x0000000000000ba3      0x31a aplite/appinfo.auto.c.33.o
- .debug_info    0x0000000000000ebd       0x93 aplite/src/resource_ids.auto.c.33.o
+.debug_info     0x0000000000000000      0xf96
+ .debug_info    0x0000000000000000      0xbe9 src/c/main.c.33.o
+ .debug_info    0x0000000000000be9      0x31a aplite/appinfo.auto.c.33.o
+ .debug_info    0x0000000000000f03       0x93 aplite/src/resource_ids.auto.c.33.o
 
-.debug_abbrev   0x0000000000000000      0x400
- .debug_abbrev  0x0000000000000000      0x31e src/c/main.c.33.o
- .debug_abbrev  0x000000000000031e       0x9e aplite/appinfo.auto.c.33.o
- .debug_abbrev  0x00000000000003bc       0x44 aplite/src/resource_ids.auto.c.33.o
+.debug_abbrev   0x0000000000000000      0x3e8
+ .debug_abbrev  0x0000000000000000      0x306 src/c/main.c.33.o
+ .debug_abbrev  0x0000000000000306       0x9e aplite/appinfo.auto.c.33.o
+ .debug_abbrev  0x00000000000003a4       0x44 aplite/src/resource_ids.auto.c.33.o
 
-.debug_loc      0x0000000000000000      0x4dc
- .debug_loc     0x0000000000000000      0x4dc src/c/main.c.33.o
+.debug_loc      0x0000000000000000      0x52e
+ .debug_loc     0x0000000000000000      0x52e src/c/main.c.33.o
 
-.debug_aranges  0x0000000000000000       0x70
+.debug_aranges  0x0000000000000000       0x78
  .debug_aranges
-                0x0000000000000000       0x40 src/c/main.c.33.o
+                0x0000000000000000       0x48 src/c/main.c.33.o
  .debug_aranges
-                0x0000000000000040       0x18 aplite/appinfo.auto.c.33.o
+                0x0000000000000048       0x18 aplite/appinfo.auto.c.33.o
  .debug_aranges
-                0x0000000000000058       0x18 aplite/src/resource_ids.auto.c.33.o
+                0x0000000000000060       0x18 aplite/src/resource_ids.auto.c.33.o
 
-.debug_ranges   0x0000000000000000      0x110
- .debug_ranges  0x0000000000000000      0x110 src/c/main.c.33.o
+.debug_ranges   0x0000000000000000       0x38
+ .debug_ranges  0x0000000000000000       0x38 src/c/main.c.33.o
 
-.debug_line     0x0000000000000000      0x505
- .debug_line    0x0000000000000000      0x30d src/c/main.c.33.o
- .debug_line    0x000000000000030d      0x131 aplite/appinfo.auto.c.33.o
- .debug_line    0x000000000000043e       0xc7 aplite/src/resource_ids.auto.c.33.o
+.debug_line     0x0000000000000000      0x509
+ .debug_line    0x0000000000000000      0x311 src/c/main.c.33.o
+ .debug_line    0x0000000000000311      0x131 aplite/appinfo.auto.c.33.o
+ .debug_line    0x0000000000000442       0xc7 aplite/src/resource_ids.auto.c.33.o
 
-.debug_str      0x0000000000000000      0x6b7
- .debug_str     0x0000000000000000      0x440 src/c/main.c.33.o
-                                        0x4d2 (size before relaxing)
- .debug_str     0x0000000000000440      0x22f aplite/appinfo.auto.c.33.o
+.debug_str      0x0000000000000000      0x6c1
+ .debug_str     0x0000000000000000      0x44a src/c/main.c.33.o
+                                        0x4e2 (size before relaxing)
+ .debug_str     0x000000000000044a      0x22f aplite/appinfo.auto.c.33.o
                                         0x311 (size before relaxing)
- .debug_str     0x000000000000066f       0x48 aplite/src/resource_ids.auto.c.33.o
+ .debug_str     0x0000000000000679       0x48 aplite/src/resource_ids.auto.c.33.o
                                         0x104 (size before relaxing)
 
-.debug_frame    0x0000000000000000       0xa8
- .debug_frame   0x0000000000000000       0xa8 src/c/main.c.33.o
+.debug_frame    0x0000000000000000       0xb8
+ .debug_frame   0x0000000000000000       0xb8 src/c/main.c.33.o

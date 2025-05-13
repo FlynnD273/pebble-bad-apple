@@ -5,9 +5,7 @@
 	"keywords": [
 		"pebble-app"
 	],
-	"dependencies": {
-		"pebble-clay": "^1.0.1"
-	},
+	"dependencies": {},
 	"pebble": {
 		"capabilities": [],
 		"displayName": "Bad Apple!!",

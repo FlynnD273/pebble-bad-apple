@@ -2,23 +2,24 @@
 
 #define FRAME_WIDTH 144
 #define FRAME_HEIGHT 108
-#define NUM_PIXELS FRAME_WIDTH * FRAME_HEIGHT
+#define NUM_PIXELS FRAME_WIDTH *FRAME_HEIGHT
 
 #define FPS 12
-#define NUM_FRAMES 420
+#define NUM_FRAMES 546
 
 static Window *s_main_window;
 static Layer *s_layer;
-static uint frame = -1;
+static uint frame = 0;
 static ResHandle frames_resource;
 static size_t frames_res_size;
 static size_t index_offset = 0;
+static bool prev_frame[FRAME_WIDTH * FRAME_HEIGHT];
 
 static void byte_set_bit(uint8_t *byte, uint8_t bit, uint8_t value) {
   *byte ^= (-value ^ *byte) & (1 << bit);
 }
 
-static void set_pixel_color(GBitmapDataRowInfo info, uint16_t x, GColor color) { 
+static void set_pixel_color(GBitmapDataRowInfo info, uint16_t x, GColor color) {
 #if defined(PBL_COLOR)
   // Write the pixel's byte color
   memset(&info.data[x], color.argb, 1);
@@ -26,18 +27,24 @@ static void set_pixel_color(GBitmapDataRowInfo info, uint16_t x, GColor color) {
   // Find the correct byte, then set the appropriate bit
   uint8_t byte = x / 8;
   uint8_t bit = x % 8;
-  byte_set_bit(&info.data[byte], bit, gcolor_equal(color, GColorWhite) ? 1 :
-0); 
+  byte_set_bit(&info.data[byte], bit, gcolor_equal(color, GColorWhite) ? 1 : 0);
 #endif
 }
 
-static uint16_t get_short(uint8_t *arr, size_t index) {
-	uint16_t val = arr[index * 2] << 8 | arr[index*2+1];
-	return val;
+uint16_t get_value(uint8_t *buffer, size_t *index) {
+  uint8_t val1 = buffer[*index];
+  if (val1 < 0xff) {
+    (*index)++;
+    return val1;
+  }
+  uint8_t msb = buffer[*index + 1];
+  uint8_t lsb = buffer[*index + 2];
+  (*index) += 3;
+  return (msb << 8) | lsb;
 }
 
 static void frame_redraw(Layer *layer, GContext *ctx) {
-  size_t num_bytes = FRAME_WIDTH * FRAME_HEIGHT * 2;
+  size_t num_bytes = FRAME_WIDTH * FRAME_HEIGHT;
   if (num_bytes + index_offset > frames_res_size) {
     num_bytes = frames_res_size - index_offset - 1;
   }
@@ -51,32 +58,39 @@ static void frame_redraw(Layer *layer, GContext *ctx) {
   bool is_black = true;
   size_t curr_index = 0;
   uint16_t curr_count = 0;
-  uint16_t curr_run_count = get_short(buffer, curr_index);
+  uint16_t curr_run_count = get_value(buffer, &curr_index);
+
   for (int y = 0; y < FRAME_HEIGHT; y++) {
     GBitmapDataRowInfo info = gbitmap_get_data_row_info(fb, y + offset.y);
     for (int x = 0; x < FRAME_WIDTH; x++) {
-      if (curr_count >= curr_run_count) {
+      while (curr_count >= curr_run_count) {
         curr_count = 0;
         is_black = !is_black;
-				curr_index++;
-        curr_run_count = get_short(buffer, curr_index);
+        curr_run_count = get_value(buffer, &curr_index);
       }
-      set_pixel_color(info, x + offset.x, is_black ? GColorBlack : GColorWhite);
-			curr_count++;
+      if (!is_black) {
+        // Why can't I XOR here??
+        prev_frame[y * FRAME_WIDTH + x] = !prev_frame[y * FRAME_WIDTH + x];
+      }
+      if (prev_frame[y * FRAME_WIDTH + x]) {
+        set_pixel_color(info, x + offset.x, GColorWhite);
+      }
+      curr_count++;
     }
   }
-	index_offset += (curr_index + 1) * 2;
-	free(buffer);
+  index_offset += curr_index;
+  free(buffer);
 
   graphics_release_frame_buffer(ctx, fb);
+  frame++;
 }
 
 static void new_frame(void *data) {
-  frame++;
-	if (frame >= NUM_FRAMES) {
-		frame = 0;
-		index_offset = 0;
-	}
+  if (frame >= NUM_FRAMES) {
+    memset(&prev_frame, 0, FRAME_WIDTH * FRAME_HEIGHT);
+    frame = 0;
+    index_offset = 0;
+  }
   app_timer_register(1000 / FPS, new_frame, NULL);
   layer_mark_dirty(s_layer);
 }

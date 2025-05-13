@@ -1,7 +1,5 @@
 {
-    "capabilities": [
-        "configurable"
-    ],
+    "capabilities": [],
     "displayName": "Bad Apple!!",
     "uuid": "6427cc44-b666-4444-b1ad-740f18e6773b",
     "sdkVersion": "3",
