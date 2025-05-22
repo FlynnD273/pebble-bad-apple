@@ -8,7 +8,7 @@ fi
 
 function scr() {
   rebble install --emulator "$1"
-  sleep 1
+  sleep 2
   rebble screenshot ./screenshots/"$1".png
   rebble kill
 }
