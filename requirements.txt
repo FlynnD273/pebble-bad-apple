@@ -1,1 +1,1 @@
-pillow
+scikit-image
