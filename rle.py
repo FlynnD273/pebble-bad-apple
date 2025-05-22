@@ -1,12 +1,15 @@
 from skimage import io, util, color
 from os import path
 import numpy as np
+import sys
 import glob
 
-INPUT_PATH = "./frames/"
-OUTPUT_PATH = "./resources/raw/frames"
+platform_type = sys.argv[1]
 
-MAX_FILE_SIZE = 256 * 1000
+INPUT_PATH = "./frames/"
+OUTPUT_PATH = "./resources/raw/frames" + ("~aplite" if platform_type == "aplite" else "")
+
+MAX_FILE_SIZE = (128 if platform_type == "aplite" else 256) * 1000
 NUM_FRAMES = -1
 
 files = glob.glob(path.join(INPUT_PATH, "*.png"))
@@ -16,21 +19,22 @@ files = files if NUM_FRAMES == -1 else files[:NUM_FRAMES]
 frame_count = 0
 bits = []
 
-split_threshold = 0.01
+split_threshold = (0.12 if platform_type == "aplite" else 0.015)
 
 
-def split(img, x, y, w, h):
+def split(img, x, y, w, h, threshold):
     x = int(x)
     y = int(y)
     w = int(w)
     h = int(h)
     mean = np.mean(img[y : y + h, x : x + w])
-    if not (w < 4 or h < 4) and abs(mean - 0.5) < 0.5 - split_threshold:
+    if not (w < 4 or h < 4) and abs(mean - 0.5) < 0.5 - threshold:
         bits.append(1)
-        split(img, x, y, w / 2, h / 2)
-        split(img, x + w / 2, y, w / 2, h / 2)
-        split(img, x, y + h / 2, w / 2, h / 2)
-        split(img, x + w / 2, y + h / 2, w / 2, h / 2)
+        new_threshold = (threshold + split_threshold) / 2
+        split(img, x, y, w / 2, h / 2, new_threshold)
+        split(img, x + w / 2, y, w / 2, h / 2, new_threshold)
+        split(img, x, y + h / 2, w / 2, h / 2, new_threshold)
+        split(img, x + w / 2, y + h / 2, w / 2, h / 2, new_threshold)
     else:
         bits.append(0)
         if mean < 0.5:
@@ -42,7 +46,7 @@ for file in files:
     img = util.img_as_float(color.rgb2gray(io.imread(file)))
     (height, width) = img.shape
     old_bits = bits.copy()
-    split(img, 0, 0, width, height)
+    split(img, 0, 0, width, height, 0.002)
     if len(bits) / 8 > MAX_FILE_SIZE:
         bits = old_bits
         break
