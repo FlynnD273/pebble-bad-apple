@@ -4,8 +4,8 @@
 #define FRAME_HEIGHT 108
 #define NUM_PIXELS FRAME_WIDTH *FRAME_HEIGHT
 
-#define FPS 12
-#define NUM_FRAMES 2629
+#define FPS 30
+#define NUM_FRAMES 2629 / 2
 
 static Window *s_main_window;
 static Layer *s_layer;
@@ -139,6 +139,11 @@ static void main_window_unload(Window *window) {
   window_destroy(s_main_window);
 }
 
+static void accel_data_handler(AccelData *data, uint32_t num_samples) {
+  // Exists to waste battery
+  return;
+}
+
 static void init() {
   s_main_window = window_create();
   window_set_background_color(s_main_window, GColorBlack);
@@ -147,6 +152,8 @@ static void init() {
                                                 .unload = main_window_unload,
                                             });
   window_stack_push(s_main_window, true);
+  accel_data_service_subscribe(5, accel_data_handler);
+  light_enable(true);
 }
 
 int main(void) {
