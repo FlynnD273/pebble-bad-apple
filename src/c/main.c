@@ -13,6 +13,7 @@ static uint frame = 0;
 static ResHandle frames_resource;
 static size_t frames_res_size;
 static size_t bit_index = 0;
+static uint8_t *buffer;
 
 uint8_t get_bit(uint8_t *buffer, size_t *index) {
   uint8_t val = buffer[(*index) / 8] >> (7 - ((*index) % 8));
@@ -93,7 +94,6 @@ static void frame_redraw(Layer *layer, GContext *ctx) {
   if (num_bytes + bit_index / 8 > frames_res_size) {
     num_bytes = frames_res_size - bit_index / 8 - 1;
   }
-  uint8_t *buffer = (uint8_t *)malloc(num_bytes);
   resource_load_byte_range(frames_resource, bit_index / 8, buffer, num_bytes);
   GRect bounds = layer_get_bounds(layer);
   GPoint offset = GPoint((bounds.size.w - FRAME_WIDTH) / 2,
@@ -107,8 +107,6 @@ static void frame_redraw(Layer *layer, GContext *ctx) {
                  buffer, &curr_bit_index);
 
   bit_index += curr_bit_index - starting_index;
-  free(buffer);
-
   frame++;
 }
 
@@ -122,6 +120,7 @@ static void new_frame(void *data) {
 }
 
 static void main_window_load(Window *window) {
+  buffer = (uint8_t *)malloc(FRAME_WIDTH * FRAME_HEIGHT);
   frames_resource = resource_get_handle(RESOURCE_ID_FRAMES);
   frames_res_size = resource_size(frames_resource);
   Layer *window_layer = window_get_root_layer(window);
@@ -135,6 +134,7 @@ static void main_window_load(Window *window) {
 }
 
 static void main_window_unload(Window *window) {
+  free(buffer);
   layer_destroy(s_layer);
   window_destroy(s_main_window);
 }
