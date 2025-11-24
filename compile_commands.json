@@ -1,12 +1,12 @@
 [
-  {
-    "directory": "/home/flynn/Documents/Pebble/pebble-bad-apple/",
-    "arguments": [
-      "gcc",
-      "-I/home/flynn/Documents/git-misc/rebbletool/sdk/SDKs/4.3/sdk-core/pebble/basalt/include/",
-      "-Ibuild/include/",
-      "-Ibuild/basalt/"
-    ],
-    "file": "*.*"
-  }
+	{
+		"directory": "/home/flynn/Documents/Pebble/pebble-bad-apple/",
+		"arguments": [
+			"gcc",
+			"-I/home/flynn/.pebble-sdk/SDKs/4.9.77/sdk-core/pebble/basalt/include/",
+			"-Ibuild/include/",
+			"-Ibuild/basalt/"
+		],
+		"file": "*.*"
+	}
 ]
