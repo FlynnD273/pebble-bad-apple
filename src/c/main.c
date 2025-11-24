@@ -1,5 +1,7 @@
 #include <pebble.h>
 
+static uint16_t width;
+static uint16_t height;
 #define FRAME_WIDTH 144
 #define FRAME_HEIGHT 108
 #define NUM_PIXELS FRAME_WIDTH *FRAME_HEIGHT
@@ -96,15 +98,15 @@ static void frame_redraw(Layer *layer, GContext *ctx) {
   }
   resource_load_byte_range(frames_resource, bit_index / 8, buffer, num_bytes);
   GRect bounds = layer_get_bounds(layer);
-  GPoint offset = GPoint((bounds.size.w - FRAME_WIDTH) / 2,
-                         (bounds.size.h - FRAME_HEIGHT) / 2);
+  GPoint offset =
+      GPoint((bounds.size.w - width) / 2, (bounds.size.h - height) / 2);
 
   uint8_t starting_index = bit_index % 8;
   size_t curr_bit_index = starting_index;
 
   graphics_context_set_fill_color(ctx, GColorWhite);
-  parse_quadtree(ctx, GRect(offset.x, offset.y, FRAME_WIDTH, FRAME_HEIGHT),
-                 buffer, &curr_bit_index);
+  parse_quadtree(ctx, GRect(offset.x, offset.y, width, height), buffer,
+                 &curr_bit_index);
 
   bit_index += curr_bit_index - starting_index;
   frame++;
@@ -120,11 +122,19 @@ static void new_frame(void *data) {
 }
 
 static void main_window_load(Window *window) {
-  buffer = (uint8_t *)malloc(FRAME_WIDTH * FRAME_HEIGHT);
   frames_resource = resource_get_handle(RESOURCE_ID_FRAMES);
   frames_res_size = resource_size(frames_resource);
   Layer *window_layer = window_get_root_layer(window);
   GRect frame = layer_get_bounds(window_layer);
+  width = frame.size.w;
+  height = width * 3 / 4;
+#ifdef PBL_ROUND
+  width *= 4;
+  width /= 5;
+  height *= 4;
+  height /= 5;
+#endif
+  buffer = (uint8_t *)malloc(FRAME_WIDTH * FRAME_HEIGHT);
   s_layer = layer_create(frame);
 
   layer_add_child(window_layer, s_layer);
