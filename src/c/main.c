@@ -11,7 +11,7 @@ static uint16_t height;
 
 static Window *s_main_window;
 static Layer *s_layer;
-static uint frame = 0;
+static uint32_t frame = 0;
 static ResHandle frames_resource;
 static size_t frames_res_size;
 static size_t bit_index = 0;

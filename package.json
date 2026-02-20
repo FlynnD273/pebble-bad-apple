@@ -1,7 +1,7 @@
 {
 	"name": "Bad Apple!!",
 	"author": "Flynn Duniho",
-	"version": "1.4.0",
+	"version": "1.5.0",
 	"keywords": [
 		"pebble-app"
 	],
@@ -18,7 +18,8 @@
 			"chalk",
 			"diorite",
 			"emery",
-			"flint"
+			"flint",
+			"gabbro"
 		],
 		"watchapp": {
 			"watchface": false
