@@ -1,3 +1,5 @@
+# ⚠️ This repository has migrated to [Codeberg](https://codeberg.org/FlynnD273/pebble-bad-apple)
+
 # Bad Apple!!
 
 <a href="https://apps.rebble.io/en_US/application/682ecefc435cc40009e73634">
